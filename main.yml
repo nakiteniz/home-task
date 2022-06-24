@@ -1,0 +1,24 @@
+- hosts: all
+
+  tasks:
+  - name: Install Apache
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: unzip command
+    yum:
+      name: unzip
+      state: latest
+
+  - name: Dowload the file
+    get_url:
+       url: https://www.free-css.com/free-css-templates/page280/petology
+       dest: /etc/httpd/conf
+
